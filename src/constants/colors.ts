@@ -10,14 +10,18 @@ export const Color = {
   black700: '#2E2D2D',
   black500: '#747474',
 
-  white: "#FFFFFF"
+  white: '#FFFFFF',
 };
 
 export const COLOR = {
   background: Color.yellow100,
   backgroundBox: Color.green200,
-  backgroundButton: Color.green300,
+  backgroundButtonActive: Color.green300,
+  backgroundButton: Color.yellow100,
+
   text: Color.black700,
   textSub: Color.black500,
-  textButton: Color.white
+  textButton: Color.white,
+
+  borderButton: Color.green700,
 };

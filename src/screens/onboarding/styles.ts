@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: Space.md,
     paddingTop: Space.md,
+    paddingBottom: Space.sl,
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',

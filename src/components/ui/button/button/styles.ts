@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor: COLOR.backgroundButton,
+    backgroundColor: COLOR.backgroundButtonActive,
     borderRadius: Space.md,
   },
 

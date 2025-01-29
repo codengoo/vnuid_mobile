@@ -1,9 +1,12 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 
-export function AtButton() {
+interface AtButtonProps {
+  onPress?: () => void;
+}
+export function AtButton({onPress}: AtButtonProps) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.content}>
         <Text style={styles.title}>Login to journey</Text>
       </View>

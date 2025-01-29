@@ -1,11 +1,20 @@
+import {useNavigation} from '@react-navigation/native';
 import {Icon} from '@src/components';
 import {AtButton} from '@src/components/ui/button';
 import {COLOR, Space} from '@src/constants';
+import {RootStackNavigationProps} from '@src/routes';
+import {useTranslation} from 'react-i18next';
 import {Image, StatusBar, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 
 export default function Onboarding() {
+  const {t} = useTranslation('onboard');
+  const navigation = useNavigation<RootStackNavigationProps>();
+
+  const handlePressLogin = () => {
+    navigation.navigate('MainLogin');
+  };
   return (
     <View style={styles.container}>
       <StatusBar hidden />
@@ -17,7 +26,7 @@ export default function Onboarding() {
         />
       </SafeAreaView>
 
-      <SafeAreaView style={styles.content} edges={["bottom"]}>
+      <SafeAreaView style={styles.content} edges={['bottom']}>
         <View>
           <View style={styles.stepWrapper}>
             <View style={styles.dot}></View>
@@ -27,14 +36,11 @@ export default function Onboarding() {
 
           <View style={styles.intro}>
             <Text style={styles.headerText}>Attendance</Text>
-            <Text style={styles.bodyText}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has
-            </Text>
+            <Text style={styles.bodyText}>{t('description')}</Text>
           </View>
         </View>
 
-        <AtButton />
+        <AtButton onPress={handlePressLogin} />
       </SafeAreaView>
     </View>
   );
