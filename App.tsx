@@ -1,9 +1,13 @@
 import Onboarding from '@src/screens/onboarding';
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 function App(): React.JSX.Element {
-  return <Onboarding />;
+  return (
+    <SafeAreaProvider>
+      <Onboarding />
+    </SafeAreaProvider>
+  );
 }
 
 export default App;

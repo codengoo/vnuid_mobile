@@ -9,6 +9,8 @@ module.exports = {
           "@src": "./src",
         }
       }
-    ]
+    ],
+    "@babel/plugin-transform-export-namespace-from",
+    'react-native-reanimated/plugin',
   ]
 };

@@ -1,34 +1,72 @@
-import {Colors} from '@src/constants';
+import {
+  Color,
+  COLOR,
+  FontFamily,
+  FontSize,
+  fontSize,
+  Space,
+  space,
+} from '@src/constants';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.tertiary,
+    backgroundColor: COLOR.background,
     flex: 1,
   },
 
   content: {
-    padding: 4,
+    flex: 1,
+    padding: Space.md,
+    paddingTop: Space.md,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+  },
+
+  intro: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: Space.sm,
+    padding: Space.xl,
+  },
+
+  dot: {
+    backgroundColor: Color.yellow500,
+    height: space(16),
+    width: space(40),
+    borderRadius: space(16),
+  },
+
+  stepWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: Space.sm,
   },
 
   header: {
-    backgroundColor: Colors.secondary,
+    backgroundColor: COLOR.backgroundBox,
     height: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomEndRadius: 60,
+    borderBottomEndRadius: space(60),
     overflow: 'hidden',
   },
 
   headerText: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: fontSize(40),
+    fontFamily: FontFamily.Lobster.regular,
     textAlign: 'center',
+    color: COLOR.text,
   },
 
   bodyText: {
     textAlign: 'center',
+    fontSize: FontSize.md,
+    fontFamily: FontFamily.Prompt.normal.medium,
+    color: COLOR.textSub,
   },
 
   body: {},

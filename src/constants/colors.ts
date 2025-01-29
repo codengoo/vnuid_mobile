@@ -1,8 +1,23 @@
-const Colors = {
-  primary: '#00803D',
-  secondary: '#DCE4C9',
-  tertiary: '#FFF9F1',
+export const Color = {
+  yellow100: '#FFF9F1',
+  yellow500: '#F5B669',
+
+  green100: '#E6EADC',
+  green200: '#DCE4C9',
+  green300: '#9BAD74',
+  green700: '#636E4A',
+
+  black700: '#2E2D2D',
+  black500: '#747474',
+
+  white: "#FFFFFF"
 };
 
-export {Colors};
-  
+export const COLOR = {
+  background: Color.yellow100,
+  backgroundBox: Color.green200,
+  backgroundButton: Color.green300,
+  text: Color.black700,
+  textSub: Color.black500,
+  textButton: Color.white
+};
