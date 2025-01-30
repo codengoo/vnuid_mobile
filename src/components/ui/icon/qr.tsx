@@ -1,7 +1,12 @@
+import {space} from '@src/constants';
 import Svg, {Path} from 'react-native-svg';
 import {IIconProp} from './type';
 
-export function QRIcon({color = 'black', size = 24, stroke = 1.5}: IIconProp) {
+export function QRIcon({
+  color = 'black',
+  size = space(24),
+  stroke = 1.5,
+}: IIconProp) {
   return (
     <Svg
       fill="none"

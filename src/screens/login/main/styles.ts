@@ -2,9 +2,18 @@ import {COLOR, FontFamily, FontSize, Space, space} from '@src/constants';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  langWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '100%',
+    paddingHorizontal: Space.sd,
+  },
+
   container: {
     backgroundColor: COLOR.background,
     flex: 1,
+    position: 'relative',
   },
 
   header: {
@@ -12,6 +21,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    flexGrow: 1,
   },
 
   content: {
@@ -21,7 +31,10 @@ export const styles = StyleSheet.create({
     padding: space(40),
     flexDirection: 'column',
     justifyContent: 'space-between',
-    flexGrow: 1
+    height: space(400),
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
   },
 
   mainOptions: {

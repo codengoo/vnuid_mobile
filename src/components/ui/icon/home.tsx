@@ -1,9 +1,10 @@
 import Svg, {Path} from 'react-native-svg';
 import {IIconProp} from './type';
+import { space } from '@src/constants';
 
 export function HomeIcon({
   color = 'black',
-  size = 24,
+  size = space(24),
   stroke = 1.5,
 }: IIconProp) {
   return (

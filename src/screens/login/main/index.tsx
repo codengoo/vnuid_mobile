@@ -1,3 +1,4 @@
+import {ButtonLang} from '@src/components';
 import {AtButtonBox} from '@src/components/ui/button/button_box';
 import {GoogleIcon, QRIcon} from '@src/components/ui/icon';
 import {space} from '@src/constants';
@@ -12,12 +13,14 @@ export function MainLogin() {
     <View style={styles.container}>
       <StatusBar hidden />
       <SafeAreaView style={styles.header} edges={['top']}>
+        <View style={styles.langWrapper}>
+          <ButtonLang />
+        </View>
         <Image
           source={require('@src/assets/images/logo_vnu_color.png')}
-          style={{width: '50%'}}
+          style={{height: space(124), aspectRatio: 2}}
           resizeMode="contain"
         />
-
         <Image
           source={require('@src/assets/images/login_1.png')}
           style={{height: space(400), marginBottom: -space(16)}}

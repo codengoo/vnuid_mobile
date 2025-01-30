@@ -1,8 +1,9 @@
 import {Dimensions} from 'react-native';
 
-const {fontScale} = Dimensions.get('screen');
+const {fontScale, scale} = Dimensions.get('screen');
 
-export const fontSize = (fontSize: number) => fontSize / fontScale;
+export const fontSize = (fontSize: number) =>
+  ((fontSize / fontScale) * 3) / scale;
 
 export const FontSize = {
   xs: fontSize(8),
@@ -44,7 +45,5 @@ export const FontFamily = {
 };
 
 const FONT = {
-    title: {
-
-    }
-}
+  title: {},
+};
