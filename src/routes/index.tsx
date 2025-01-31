@@ -6,7 +6,10 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
-import {MainLogin} from '@src/screens/login/main';
+import {LoginMain} from '@src/screens/login/main';
+import {LoginNfc} from '@src/screens/login/nfc';
+import {LoginPassword} from '@src/screens/login/pass';
+import {LoginQRMain} from '@src/screens/login/qr_main';
 import Onboarding from '@src/screens/onboarding';
 
 const RootStack = createNativeStackNavigator({
@@ -14,7 +17,10 @@ const RootStack = createNativeStackNavigator({
   screenOptions: {headerShown: false},
   screens: {
     Onboarding: Onboarding,
-    MainLogin: MainLogin,
+    LoginMain: LoginMain,
+    LoginQRMain: LoginQRMain,
+    LoginPassword: LoginPassword,
+    LoginNfc: LoginNfc,
   },
 });
 

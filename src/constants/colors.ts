@@ -1,5 +1,6 @@
 export const Color = {
   yellow100: '#FFF9F1',
+  yellow400: '#FFCB8B',
   yellow500: '#F5B669',
 
   green100: '#E6EADC',
@@ -16,9 +17,11 @@ export const Color = {
 export const COLOR = {
   background: Color.yellow100,
   backgroundBox: Color.green200,
+  backgroundBoxHighlight: Color.yellow400,
   backgroundButtonActive: Color.green300,
   backgroundButtonHighlight: Color.yellow500,
   backgroundButton: Color.yellow100,
+  backgroundInput: Color.yellow100,
 
   text: Color.black700,
   textSub: Color.black500,
@@ -26,4 +29,5 @@ export const COLOR = {
   textButtonHighlight: Color.black700,
 
   borderButton: Color.green700,
+  borderInput: Color.green700
 };

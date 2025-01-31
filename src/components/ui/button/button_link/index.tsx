@@ -8,7 +8,7 @@ interface AtButtonLinkProps {
 
 export function AtButtonLink({title, onPress}: AtButtonLinkProps) {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable onPress={onPress} style={styles.container}>
       <Text style={styles.title}>{title}</Text>
     </Pressable>
   );

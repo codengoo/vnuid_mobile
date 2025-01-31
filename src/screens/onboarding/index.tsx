@@ -13,7 +13,7 @@ export default function Onboarding() {
   const navigation = useNavigation<RootStackNavigationProps>();
 
   const handlePressLogin = () => {
-    navigation.navigate('MainLogin');
+    navigation.navigate('LoginMain');
   };
   return (
     <View style={styles.container}>
@@ -40,7 +40,7 @@ export default function Onboarding() {
           </View>
         </View>
 
-        <AtButton onPress={handlePressLogin} />
+        <AtButton onPress={handlePressLogin} title='Login to start'/>
       </SafeAreaView>
     </View>
   );

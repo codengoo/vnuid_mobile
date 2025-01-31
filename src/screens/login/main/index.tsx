@@ -1,4 +1,5 @@
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {useNavigation} from '@react-navigation/native';
 import {
   AtBottomSheet,
   AtButtonBox,
@@ -8,6 +9,7 @@ import {
 } from '@src/components';
 import {GoogleIcon, QRIcon} from '@src/components/ui/icon';
 import {COLOR, FontFamily, FontSize, Space, space} from '@src/constants';
+import {RootStackNavigationProps} from '@src/routes';
 import {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, StatusBar, Text, View} from 'react-native';
@@ -15,13 +17,18 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 
-export function MainLogin() {
+export function LoginMain() {
   const {t} = useTranslation('login');
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const {navigate} = useNavigation<RootStackNavigationProps>();
 
   const showModal = () => {
     bottomSheetModalRef.current?.present();
   };
+
+  const navigateToQRLogin = () => navigate('LoginQRMain');
+  const navigateToPassLogin = () => navigate('LoginPassword');
+  const navigateToNfcLogin = () => navigate('LoginNfc');
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -36,7 +43,7 @@ export function MainLogin() {
           resizeMode="contain"
         />
         <Image
-          source={require('@src/assets/images/login_1.png')}
+          source={require('@src/assets/images/login_main.png')}
           style={{height: space(400), marginBottom: -space(16)}}
           resizeMode="contain"
         />
@@ -45,7 +52,12 @@ export function MainLogin() {
       <SafeAreaView edges={['bottom']} style={styles.content}>
         <View style={styles.mainOptions}>
           <AtButtonBox title="Google" expandable icon={GoogleIcon} />
-          <AtButtonBox title="QR code" expandable icon={QRIcon} />
+          <AtButtonBox
+            title="QR code"
+            expandable
+            icon={QRIcon}
+            onPress={navigateToQRLogin}
+          />
 
           <AtButtonLink title={t('try_other_way')} onPress={showModal} />
         </View>
@@ -75,12 +87,14 @@ export function MainLogin() {
             icon={Icon.PasswordIcon}
             expandable
             color="yellow"
+            onPress={navigateToPassLogin}
           />
           <AtButtonBox
             title={t('using_NFC')}
             icon={Icon.NfcIcon}
             expandable
             color="yellow"
+            onPress={navigateToNfcLogin}
           />
         </View>
       </AtBottomSheet>

@@ -3,5 +3,7 @@ export * from './google';
 export * from './home';
 export * from './login';
 export * from './nfc';
+export * from './number';
 export * from './password';
 export * from './qr';
+export * from './type';

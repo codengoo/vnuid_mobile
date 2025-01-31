@@ -1,8 +1,8 @@
-import {COLOR, FontFamily, FontSize, space, Space} from '@src/constants';
+import {Color, COLOR, FontFamily, FontSize, space, Space} from '@src/constants';
 import {StyleSheet} from 'react-native';
 
 export interface IAtButtonStyle {
-  color?: 'default' | 'yellow';
+  color?: 'default' | 'yellow' | 'green';
 }
 
 export const style = ({color = 'default'}: IAtButtonStyle) =>
@@ -11,7 +11,9 @@ export const style = ({color = 'default'}: IAtButtonStyle) =>
       backgroundColor:
         color === 'default'
           ? COLOR.backgroundButton
-          : COLOR.backgroundButtonHighlight,
+          : color === 'green'
+            ? Color.green300
+            : COLOR.backgroundButtonHighlight,
       borderRadius: Space.sd,
       borderColor: COLOR.borderButton,
       borderWidth: space(2),
@@ -33,8 +35,18 @@ export const style = ({color = 'default'}: IAtButtonStyle) =>
     },
 
     title: {
-      fontFamily: FontFamily.Prompt.normal.medium,
-      color: COLOR.text,
+      fontFamily: FontFamily.Prompt.normal.semiBold,
+      color:
+        color === 'default'
+          ? COLOR.text
+          : color === 'green'
+            ? COLOR.textButton
+            : COLOR.text,
       fontSize: FontSize.md,
+    },
+
+    center: {
+      textAlign: 'center',
+      justifyContent: 'center',
     },
   });
