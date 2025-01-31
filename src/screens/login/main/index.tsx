@@ -1,16 +1,30 @@
-import {ButtonLang} from '@src/components';
-import {AtButtonBox} from '@src/components/ui/button/button_box';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {
+  AtBottomSheet,
+  AtButtonBox,
+  AtButtonLink,
+  ButtonLang,
+  Icon,
+} from '@src/components';
 import {GoogleIcon, QRIcon} from '@src/components/ui/icon';
-import {space} from '@src/constants';
+import {COLOR, FontFamily, FontSize, Space, space} from '@src/constants';
+import {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, StatusBar, Text, View} from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 
 export function MainLogin() {
   const {t} = useTranslation('login');
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const showModal = () => {
+    bottomSheetModalRef.current?.present();
+  };
+
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <StatusBar hidden />
       <SafeAreaView style={styles.header} edges={['top']}>
         <View style={styles.langWrapper}>
@@ -33,11 +47,43 @@ export function MainLogin() {
           <AtButtonBox title="Google" expandable icon={GoogleIcon} />
           <AtButtonBox title="QR code" expandable icon={QRIcon} />
 
-          <Text style={styles.tryText}>{t('try_other_way')}</Text>
+          <AtButtonLink title={t('try_other_way')} onPress={showModal} />
         </View>
 
         <Text style={styles.helperText}>{t('login_helper')}</Text>
       </SafeAreaView>
-    </View>
+
+      <AtBottomSheet ref={bottomSheetModalRef}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: space(20),
+            padding: Space.sd,
+          }}>
+          <Text
+            style={{
+              fontFamily: FontFamily.Prompt.normal.medium,
+              fontSize: FontSize.md,
+              textAlign: 'center',
+              color: COLOR.text,
+            }}>
+            {t('alternate_login_helper')}
+          </Text>
+          <AtButtonBox
+            title={t('using_password')}
+            icon={Icon.PasswordIcon}
+            expandable
+            color="yellow"
+          />
+          <AtButtonBox
+            title={t('using_NFC')}
+            icon={Icon.NfcIcon}
+            expandable
+            color="yellow"
+          />
+        </View>
+      </AtBottomSheet>
+    </GestureHandlerRootView>
   );
 }

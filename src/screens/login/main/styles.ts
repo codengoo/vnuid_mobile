@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     padding: space(40),
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: space(400),
+
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -42,6 +42,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: Space.lg,
     alignItems: 'center',
+    marginBottom: space(20)
   },
 
   tryText: {

@@ -17,11 +17,13 @@ export const COLOR = {
   background: Color.yellow100,
   backgroundBox: Color.green200,
   backgroundButtonActive: Color.green300,
+  backgroundButtonHighlight: Color.yellow500,
   backgroundButton: Color.yellow100,
 
   text: Color.black700,
   textSub: Color.black500,
   textButton: Color.white,
+  textButtonHighlight: Color.black700,
 
   borderButton: Color.green700,
 };

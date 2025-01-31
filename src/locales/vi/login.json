@@ -1,4 +1,7 @@
 {
   "try_other_way": "Thử cách khác",
-  "login_helper": "Ứng dụng này được thiết kế dành riêng cho sinh viên VNU. Vui lòng đăng nhập để xác minh danh tính của bạn."
+  "login_helper": "Ứng dụng này được thiết kế dành riêng cho sinh viên VNU. Vui lòng đăng nhập để xác minh danh tính của bạn.",
+  "alternate_login_helper": "Sử dụng một trong các cách sau để đăng nhập vào tài khoản của bạn",
+  "using_password": "Dùng mật khẩu",
+  "using_NFC": "Dùng NFC"
 }

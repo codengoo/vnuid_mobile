@@ -1,32 +1,40 @@
 import {COLOR, FontFamily, FontSize, space, Space} from '@src/constants';
 import {StyleSheet} from 'react-native';
 
-export const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLOR.backgroundButton,
-    borderRadius: Space.sd,
-    borderColor: COLOR.borderButton,
-    borderWidth: space(2),
-    padding: Space.sd,
+export interface IAtButtonStyle {
+  color?: 'default' | 'yellow';
+}
 
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+export const style = ({color = 'default'}: IAtButtonStyle) =>
+  StyleSheet.create({
+    container: {
+      backgroundColor:
+        color === 'default'
+          ? COLOR.backgroundButton
+          : COLOR.backgroundButtonHighlight,
+      borderRadius: Space.sd,
+      borderColor: COLOR.borderButton,
+      borderWidth: space(2),
+      padding: Space.sd,
 
-    width: "100%",
-  },
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
 
-  titleWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Space.md,
-  },
+      width: '100%',
+    },
 
-  title: {
-    fontFamily: FontFamily.Prompt.normal.medium,
-    color: COLOR.text,
-    fontSize: FontSize.md,
-  },
-});
+    titleWrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: Space.md,
+    },
+
+    title: {
+      fontFamily: FontFamily.Prompt.normal.medium,
+      color: COLOR.text,
+      fontSize: FontSize.md,
+    },
+  });
