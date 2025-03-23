@@ -1,4 +1,4 @@
-package com.vnuat
+package com.vnuid
 
 import android.annotation.SuppressLint
 import android.content.Intent

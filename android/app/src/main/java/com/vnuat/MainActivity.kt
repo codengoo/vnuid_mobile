@@ -1,4 +1,4 @@
-package com.vnuat
+package com.vnuid
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -7,7 +7,7 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate
 import android.os.Bundle;
 
 class MainActivity : ReactActivity() {
-    override fun getMainComponentName(): String = "vnuat"
+    override fun getMainComponentName(): String = "vnuid"
 
     override fun createReactActivityDelegate(): ReactActivityDelegate =
         DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
