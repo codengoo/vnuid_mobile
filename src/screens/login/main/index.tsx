@@ -9,6 +9,7 @@ import {
 } from '@src/components';
 import {GoogleIcon, QRIcon} from '@src/components/ui/icon';
 import {COLOR, FontFamily, FontSize, Space, space} from '@src/constants';
+import {signInWithGoogle} from '@src/helpers/login/login_google';
 import {RootStackNavigationProps} from '@src/routes';
 import {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -51,7 +52,12 @@ export function LoginMain() {
 
       <SafeAreaView edges={['bottom']} style={styles.content}>
         <View style={styles.mainOptions}>
-          <AtButtonBox title="Google" expandable icon={GoogleIcon} />
+          <AtButtonBox
+            title="Google"
+            expandable
+            icon={GoogleIcon}
+            onPress={() => signInWithGoogle(t)}
+          />
           <AtButtonBox
             title="QR code"
             expandable

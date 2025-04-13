@@ -1,3 +1,5 @@
+import { red } from "react-native-reanimated/lib/typescript/Colors";
+
 export const Color = {
   yellow100: '#FFF9F1',
   yellow400: '#FFCB8B',
@@ -7,6 +9,9 @@ export const Color = {
   green200: '#DCE4C9',
   green300: '#9BAD74',
   green700: '#636E4A',
+
+  red100: '#F8D7DA',
+  red300: '#F26E67',
 
   black700: '#2E2D2D',
   black500: '#747474',
