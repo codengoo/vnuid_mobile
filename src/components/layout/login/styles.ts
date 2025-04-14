@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    flexGrow: 1,
     paddingHorizontal: Space.sl,
   },
 
@@ -29,8 +28,6 @@ export const styles = StyleSheet.create({
   content_body: {
     backgroundColor: COLOR.backgroundBox,
     borderRadius: space(40),
-    borderBottomEndRadius: 0,
-    borderBottomStartRadius: 0,
     display: 'flex',
     padding: space(40),
     gap: Space.xl,
@@ -38,6 +35,5 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: Space.md,
-    marginBottom: 0
   },
 });

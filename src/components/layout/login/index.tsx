@@ -1,14 +1,19 @@
 import {ReactNode} from 'react';
-import {StatusBar, View} from 'react-native';
+import {KeyboardAvoidingView, Platform, StatusBar, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 
 export const LoginLayout = ({children}: {children: ReactNode}) => {
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <StatusBar hidden />
-      {children}
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{flex: 1}}
+      keyboardVerticalOffset={0}>
+      <SafeAreaView style={styles.container} edges={['top']}>
+        <StatusBar hidden />
+        {children}
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
