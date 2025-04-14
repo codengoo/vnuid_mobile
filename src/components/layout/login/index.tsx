@@ -19,7 +19,7 @@ export const LoginDecoratorLayout = ({children}: {children: ReactNode}) => {
 export const LoginContentLayout = ({children}: {children: ReactNode}) => {
   return (
     <SafeAreaView style={styles.content} edges={['bottom']}>
-      {children}
+      <View style={styles.content_body}>{children}</View>
     </SafeAreaView>
   );
 };

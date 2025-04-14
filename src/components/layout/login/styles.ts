@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
     backgroundColor: COLOR.background,
     flex: 1,
     position: 'relative',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 
   header: {
@@ -14,22 +16,28 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexGrow: 1,
-    paddingHorizontal: Space.xl,
+    paddingHorizontal: Space.sl,
   },
 
   content: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+  },
+
+  content_body: {
     backgroundColor: COLOR.backgroundBox,
     borderRadius: space(40),
+    borderBottomEndRadius: 0,
+    borderBottomStartRadius: 0,
     display: 'flex',
     padding: space(40),
     gap: Space.xl,
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    width: '100%',
+    margin: Space.md,
+    marginBottom: 0
   },
 });

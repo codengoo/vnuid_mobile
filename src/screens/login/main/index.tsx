@@ -18,7 +18,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
 
-export function LoginMain() {
+export function LoginMainScreen() {
   const {t} = useTranslation('login');
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const {navigate} = useNavigation<RootStackNavigationProps>();

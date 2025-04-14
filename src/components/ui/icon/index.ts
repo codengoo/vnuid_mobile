@@ -7,3 +7,5 @@ export * from './number';
 export * from './password';
 export * from './qr';
 export * from './type';
+export * from "./card"
+export * from "./asterisk"

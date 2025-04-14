@@ -1,9 +1,10 @@
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {navigationRef} from '@src/routes';
 import {TFunction} from 'i18next';
 import DeviceInfo from 'react-native-device-info';
-import Toast from 'react-native-toast-message';
-import { axios } from '../network';
 import * as Keychain from 'react-native-keychain';
+import Toast from 'react-native-toast-message';
+import {axios} from '../network';
 
 GoogleSignin.configure({
   webClientId:
@@ -39,7 +40,7 @@ export async function signInWithGoogle(t: TFunction<'login', undefined>) {
   const deviceID = await DeviceInfo.getUniqueId();
   const deviceName = await DeviceInfo.getDeviceName();
 
-  try {    
+  try {
     const response = await axios.post('/auth/login_google', {
       id_token: idToken,
       device_id: deviceID,
@@ -52,7 +53,10 @@ export async function signInWithGoogle(t: TFunction<'login', undefined>) {
       await Keychain.setGenericPassword('authToken', response.data.token);
       // move to main screen
     } else {
-      // save tmp token and move to 2fa screen
+      navigationRef.navigate('Login2Fa', {
+        token: response.data.token,
+        allowMethods: response.data.allow,
+      });
     }
   } catch (error) {
     console.log((error as Error).message);
