@@ -1,9 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {navigationRef} from '@src/routes';
-import {TFunction} from 'i18next';
 import DeviceInfo from 'react-native-device-info';
-import * as Keychain from 'react-native-keychain';
-import Toast from 'react-native-toast-message';
+import {STG_AUTH_2FA_TOKEN, STG_AUTH_TOKEN} from '../constants';
 import {axios} from '../network';
 
 GoogleSignin.configure({
@@ -24,18 +23,9 @@ async function loginGoogle(): Promise<string | undefined> {
   }
 }
 
-function toastFailed(t: TFunction<'login', undefined>) {
-  Toast.show({
-    type: 'error',
-    text1: t('toast_failed'),
-    text2: t('toast_failed_description'),
-    autoHide: true,
-  });
-}
-
-export async function signInWithGoogle(t: TFunction<'login', undefined>) {
+export async function signInWithGoogle() {
   const idToken = await loginGoogle();
-  if (!idToken) toastFailed(t);
+  if (!idToken) throw new Error('Google Sign-In failed');
 
   const deviceID = await DeviceInfo.getUniqueId();
   const deviceName = await DeviceInfo.getDeviceName();
@@ -49,17 +39,18 @@ export async function signInWithGoogle(t: TFunction<'login', undefined>) {
     console.log(response.data);
 
     if (response.status === 200) {
-      // save token
-      await Keychain.setGenericPassword('authToken', response.data.token);
-      // move to main screen
-    } else {
+      await AsyncStorage.setItem(STG_AUTH_TOKEN, response.data.token);
+
+      navigationRef.navigate('Home');
+    } else if (response.status === 202) {
+      await AsyncStorage.setItem(STG_AUTH_2FA_TOKEN, response.data.token);
+
       navigationRef.navigate('Login2Fa', {
         token: response.data.token,
         allowMethods: response.data.allow,
       });
-    }
+    } else throw new Error('Could not login');
   } catch (error) {
-    console.log((error as Error).message);
-    toastFailed(t);
+    throw error;
   }
 }

@@ -11,17 +11,19 @@ import {GoogleIcon, QRIcon} from '@src/components/ui/icon';
 import {COLOR, FontFamily, FontSize, Space, space} from '@src/constants';
 import {signInWithGoogle} from '@src/helpers/login/login_google';
 import {RootStackNavigationProps} from '@src/routes';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, StatusBar, Text, View} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 import {styles} from './styles';
 
 export function LoginMainScreen() {
   const {t} = useTranslation('login');
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const {navigate} = useNavigation<RootStackNavigationProps>();
+  const [isLoading, setLoading] = useState(false);
 
   const showModal = () => {
     bottomSheetModalRef.current?.present();
@@ -30,6 +32,22 @@ export function LoginMainScreen() {
   const navigateToQRLogin = () => navigate('LoginQRMain');
   const navigateToPassLogin = () => navigate('LoginPassword');
   const navigateToNfcLogin = () => navigate('LoginNfc');
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoading(true);
+      await signInWithGoogle();
+    } catch (error) {
+      Toast.show({
+        type: 'error',
+        text1: t('toast_failed'),
+        text2: t('toast_failed_description'),
+        autoHide: true,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <GestureHandlerRootView style={styles.container}>
@@ -56,13 +74,15 @@ export function LoginMainScreen() {
             title="Google"
             expandable
             icon={GoogleIcon}
-            onPress={() => signInWithGoogle(t)}
+            onPress={handleGoogleLogin}
+            disabled={isLoading}
           />
           <AtButtonBox
             title="QR code"
             expandable
             icon={QRIcon}
             onPress={navigateToQRLogin}
+            disabled={isLoading}
           />
 
           <AtButtonLink title={t('try_other_way')} onPress={showModal} />

@@ -1,9 +1,9 @@
-import { red } from "react-native-reanimated/lib/typescript/Colors";
-
 export const Color = {
   yellow100: '#FFF9F1',
   yellow400: '#FFCB8B',
   yellow500: '#F5B669',
+  yellow700: '#FFA500',
+  yellow900: '#FF8C00',
 
   green100: '#E6EADC',
   green200: '#DCE4C9',
@@ -34,5 +34,5 @@ export const COLOR = {
   textButtonHighlight: Color.black700,
 
   borderButton: Color.green700,
-  borderInput: Color.green700
+  borderInput: Color.green700,
 };

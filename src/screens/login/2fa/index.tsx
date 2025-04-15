@@ -23,7 +23,7 @@ export function Login2FaScreen({route}: Props) {
   const {t} = useTranslation('login');
 
   const navigateToScreen = (screen: string) => {
-    navigate('LoginPass2Fa', {token});
+    navigate('LoginPass2Fa');
   };
 
   return (

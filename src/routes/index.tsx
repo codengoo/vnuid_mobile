@@ -7,6 +7,7 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
+import { HomeScreen } from '@src/screens/home';
 import {Login2FaScreen} from '@src/screens/login/2fa';
 import {LoginMainScreen} from '@src/screens/login/main';
 import {LoginNfc} from '@src/screens/login/nfc';
@@ -26,6 +27,7 @@ const RootStack = createNativeStackNavigator({
     LoginPassword: LoginPassword,
     LoginNfc: LoginNfc,
     LoginPass2Fa: LoginPass2FaScreen,
+    Home: HomeScreen
   },
 });
 

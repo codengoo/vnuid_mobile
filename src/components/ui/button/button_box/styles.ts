@@ -3,11 +3,13 @@ import {StyleSheet} from 'react-native';
 
 export interface IAtButtonStyle {
   color?: 'default' | 'yellow' | 'green';
+  disabled?: boolean;
 }
 
-export const style = ({color = 'default'}: IAtButtonStyle) =>
+export const style = ({color = 'default', disabled}: IAtButtonStyle) =>
   StyleSheet.create({
     container: {
+      opacity: disabled ? 0.5 : 1,
       backgroundColor:
         color === 'default'
           ? COLOR.backgroundButton

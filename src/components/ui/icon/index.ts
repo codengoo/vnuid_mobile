@@ -9,3 +9,6 @@ export * from './qr';
 export * from './type';
 export * from "./card"
 export * from "./asterisk"
+export * from "./eye_open"
+export * from "./eye_close"
+export * from "./check"

@@ -1,5 +1,5 @@
 import {COLOR, space} from '@src/constants';
-import {ReactNode, useMemo} from 'react';
+import {ReactNode, useEffect, useMemo} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {ChevronRightIcon} from '../../icon';
 import {IIconProp} from '../../icon/type';
@@ -11,6 +11,7 @@ interface AtButtonBoxProps extends IAtButtonStyle {
   onPress?: () => void;
   expandable?: boolean;
   center?: boolean;
+  disabled?: boolean;
 }
 export function AtButtonBox({
   icon: Icon,
@@ -19,10 +20,13 @@ export function AtButtonBox({
   color,
   onPress,
   center,
+  disabled,
 }: AtButtonBoxProps) {
-  const styles = useMemo(() => style({color}), [color]);
+  const styles = useMemo(() => style({color, disabled}), [color, disabled]);
+  
   return (
     <TouchableOpacity
+      disabled={disabled}
       style={[styles.container, center && styles.center]}
       onPress={onPress}>
       <View style={styles.titleWrapper}>
