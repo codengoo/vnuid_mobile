@@ -9,8 +9,8 @@ import {space} from '@src/constants';
 import {RootStackNavigationProps} from '@src/routes';
 import {useTranslation} from 'react-i18next';
 import {Image, Text, View} from 'react-native';
+import {HeaderLogin} from '../components';
 import {styles} from './styles';
-import { HeaderLogin } from '../components';
 
 type Props = StaticScreenProps<{
   token: string;
@@ -21,10 +21,6 @@ export function Login2FaScreen({route}: Props) {
   const {goBack, navigate} = useNavigation<RootStackNavigationProps>();
   const {token = '', allowMethods = []} = route.params || {};
   const {t} = useTranslation('login');
-
-  const navigateToScreen = (screen: any) => {
-    navigate(screen);
-  };
 
   return (
     <LoginLayout>
@@ -67,6 +63,7 @@ export function Login2FaScreen({route}: Props) {
               title="Scan NFC"
               color="yellow"
               icon={Icon.CardIcon}
+              onPress={() => navigate('LoginNfc', {is2fa: true})}
             />
           ) : null}
 
@@ -83,7 +80,7 @@ export function Login2FaScreen({route}: Props) {
               title="Enter password"
               color="yellow"
               icon={Icon.PasswordIcon}
-              onPress={() => navigateToScreen('LoginPass2Fa')}
+              onPress={() => navigate('LoginPass2Fa')}
             />
           ) : null}
 
@@ -92,7 +89,7 @@ export function Login2FaScreen({route}: Props) {
               title="Enter in-app code"
               color="yellow"
               icon={Icon.NumberIcon}
-              onPress={() => navigateToScreen('LoginCode2Fa')}
+              onPress={() => navigate('LoginCode2Fa')}
             />
           ) : null}
 

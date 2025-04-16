@@ -1,6 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
-import {Color, space} from '@src/constants';
-import {signInWithNfc} from '@src/helpers/login';
+import {StaticScreenProps, useNavigation} from '@react-navigation/native';
+import {signInWithNfc, signInWithNfc2Fa} from '@src/helpers/login';
 import {RootStackNavigationProps} from '@src/routes';
 import {useEffect, useRef} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -12,9 +11,13 @@ import {
   useCameraPermission,
   useCodeScanner,
 } from 'react-native-vision-camera';
-import { styles } from './styles';
+import {styles} from './styles';
 
-export function ScanNfcQrScreen() {
+type Props = StaticScreenProps<{
+  is2fa: boolean;
+}>;
+export function ScanNfcQrScreen({route}: Props) {
+  const {is2fa = false} = route.params || {};
   const {t} = useTranslation('login');
   const {goBack} = useNavigation<RootStackNavigationProps>();
   const {hasPermission, requestPermission} = useCameraPermission();
@@ -23,7 +26,8 @@ export function ScanNfcQrScreen() {
 
   const handleSignin = async (nfc: string, uid: string) => {
     try {
-      await signInWithNfc(nfc, uid);
+      if (is2fa) await signInWithNfc(nfc, uid);
+      else await signInWithNfc2Fa(nfc, true);
     } catch (error) {
       Toast.show({
         type: 'error',

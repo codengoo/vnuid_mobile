@@ -31,7 +31,7 @@ export function LoginMainScreen() {
 
   const navigateToQRLogin = () => navigate('LoginQRMain');
   const navigateToPassLogin = () => navigate('LoginPass');
-  const navigateToNfcLogin = () => navigate('LoginNfc');
+  const navigateToNfcLogin = () => navigate('LoginNfc', {is2fa: false});
 
   const handleGoogleLogin = async () => {
     try {

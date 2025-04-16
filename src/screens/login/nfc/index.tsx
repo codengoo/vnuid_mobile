@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {StaticScreenProps, useNavigation} from '@react-navigation/native';
 import {AtButtonBox, AtButtonLink, Icon} from '@src/components';
 import {
   LoginContentLayout,
@@ -16,7 +16,13 @@ import Toast from 'react-native-toast-message';
 import {HeaderLogin, LoginForm} from '../components';
 import {styles} from './styles';
 
-export function LoginNfcScreen() {
+type Props = StaticScreenProps<{
+  is2fa: boolean;
+}>;
+
+export function LoginNfcScreen({route}: Props) {
+  const {is2fa = false} = route.params || {};
+
   const {t} = useTranslation('login');
   const {goBack, navigate} = useNavigation<RootStackNavigationProps>();
 
@@ -70,7 +76,7 @@ export function LoginNfcScreen() {
   }, []);
 
   const navigateToScanNfc = () => {
-    navigate('LoginNfcQr');
+    navigate('LoginNfcQr', {is2fa});
   };
 
   return (
