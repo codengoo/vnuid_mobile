@@ -1,6 +1,5 @@
 import {StaticScreenProps, useNavigation} from '@react-navigation/native';
 import {AtButtonBox, AtButtonLink, Icon} from '@src/components';
-import {HeaderLogin} from '@src/components/common';
 import {
   LoginContentLayout,
   LoginDecoratorLayout,
@@ -11,6 +10,7 @@ import {RootStackNavigationProps} from '@src/routes';
 import {useTranslation} from 'react-i18next';
 import {Image, Text, View} from 'react-native';
 import {styles} from './styles';
+import { HeaderLogin } from '../components';
 
 type Props = StaticScreenProps<{
   token: string;
@@ -64,7 +64,7 @@ export function Login2FaScreen({route}: Props) {
 
           {allowMethods.includes('nfc') ? (
             <AtButtonBox
-              title="Scan QR code"
+              title="Scan NFC"
               color="yellow"
               icon={Icon.CardIcon}
             />

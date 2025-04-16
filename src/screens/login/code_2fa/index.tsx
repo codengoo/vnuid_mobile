@@ -1,5 +1,4 @@
 import {AtInput, Icon} from '@src/components';
-import {HeaderLogin} from '@src/components/common';
 import {
   LoginContentLayout,
   LoginDecoratorLayout,
@@ -7,11 +6,12 @@ import {
 } from '@src/components/layout';
 import {AtCheckbox} from '@src/components/ui/checkbox';
 import {space} from '@src/constants';
-import {signInWithCode2Fa} from '@src/helpers/login/login_code_2fa';
+import {signInWithCode2Fa} from '@src/helpers/login';
 import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, View} from 'react-native';
 import Toast from 'react-native-toast-message';
+import {HeaderLogin} from '../components';
 
 export function LoginCode2faScreen() {
   const [code, setCode] = useState('');

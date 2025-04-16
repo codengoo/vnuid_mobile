@@ -4,17 +4,13 @@ import {navigationRef} from '@src/routes';
 import DeviceInfo from 'react-native-device-info';
 import {STG_AUTH_2FA_TOKEN, STG_AUTH_TOKEN} from '../constants';
 import {axios} from '../network';
+import { IResponseLogin } from '@src/types';
 
 GoogleSignin.configure({
   webClientId:
     '842014203560-5h2ec7sni2ag0v1u8v3gm4hn851qo8ur.apps.googleusercontent.com',
   offlineAccess: true,
 });
-
-interface IResponseLogin {
-  token: string;
-  allow: string[];
-}
 
 async function switchLogin(data: IResponseLogin, status: number) {
   switch (status) {
@@ -96,7 +92,7 @@ export async function signInWithNfc(nfc: string, uid: string){
     const deviceName = await DeviceInfo.getDeviceName();
   
     try {
-      const response = await axios.post('/auth/login_google', {
+      const response = await axios.post('/auth/login_nfc', {
         nfc_code: nfc,
         uid: uid,
         device_id: deviceID,

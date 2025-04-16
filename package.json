@@ -24,6 +24,7 @@
     "react-native": "0.76.6",
     "react-native-device-info": "^14.0.4",
     "react-native-gesture-handler": "^2.22.1",
+    "react-native-nfc-manager": "^3.16.1",
     "react-native-qrcode-svg": "^6.3.14",
     "react-native-reanimated": "^3.16.7",
     "react-native-safe-area-context": "^5.1.0",

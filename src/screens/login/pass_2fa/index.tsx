@@ -6,12 +6,12 @@ import {
 } from '@src/components/layout';
 import {AtCheckbox} from '@src/components/ui/checkbox';
 import {space} from '@src/constants';
-import {signInWithPass2Fa} from '@src/helpers/login/login_pass_2fa';
 import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, View} from 'react-native';
 import Toast from 'react-native-toast-message';
 import {HeaderLogin, LoginSection} from '../components';
+import { signInWithPass2Fa } from '@src/helpers/login';
 
 export function LoginPass2FaScreen() {
   const [password, setPassword] = useState('');

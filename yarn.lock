@@ -5425,6 +5425,11 @@ react-native-is-edge-to-edge@1.1.7:
   resolved "https://registry.npmjs.org/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.7.tgz"
   integrity sha512-EH6i7E8epJGIcu7KpfXYXiV2JFIYITtq+rVS8uEb+92naMRBdxhTuS8Wn2Q7j9sqyO0B+Xbaaf9VdipIAmGW4w==
 
+react-native-nfc-manager@^3.16.1:
+  version "3.16.1"
+  resolved "https://registry.yarnpkg.com/react-native-nfc-manager/-/react-native-nfc-manager-3.16.1.tgz#a08a192e862864d51245f0aeb59d62020a1849f4"
+  integrity sha512-rYhJSThAxAT4AVpZzZJc3X1jiTnZQlmrzk9DeeWLstUTXCoECt/75brLgn+EiXK+AfONnMnFdsSzIyruVWyIdw==
+
 react-native-qrcode-svg@^6.3.14:
   version "6.3.15"
   resolved "https://registry.npmjs.org/react-native-qrcode-svg/-/react-native-qrcode-svg-6.3.15.tgz"
