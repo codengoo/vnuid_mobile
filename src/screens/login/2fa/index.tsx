@@ -22,8 +22,8 @@ export function Login2FaScreen({route}: Props) {
   const {token = '', allowMethods = []} = route.params || {};
   const {t} = useTranslation('login');
 
-  const navigateToScreen = (screen: string) => {
-    navigate('LoginPass2Fa');
+  const navigateToScreen = (screen: any) => {
+    navigate(screen);
   };
 
   return (
@@ -83,7 +83,7 @@ export function Login2FaScreen({route}: Props) {
               title="Enter password"
               color="yellow"
               icon={Icon.PasswordIcon}
-              onPress={() => navigateToScreen('LoginPassword')}
+              onPress={() => navigateToScreen('LoginPass2Fa')}
             />
           ) : null}
 
@@ -92,6 +92,7 @@ export function Login2FaScreen({route}: Props) {
               title="Enter in-app code"
               color="yellow"
               icon={Icon.NumberIcon}
+              onPress={() => navigateToScreen('LoginCode2Fa')}
             />
           ) : null}
 

@@ -39,18 +39,4 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: Space.sm,
   },
-
-  titleSection: {
-    color: COLOR.text,
-    fontSize: FontSize.md,
-    fontFamily: FontFamily.Prompt.normal.medium,
-    textAlign: 'center',
-  },
-
-  actionWrapper: {
-    width: '100%',
-    display: "flex",
-    flexDirection:"column",
-    alignItems: "center"
-  },
 });

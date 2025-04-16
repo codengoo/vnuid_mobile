@@ -9,7 +9,6 @@ import {
 } from '@src/components';
 import {GoogleIcon, QRIcon} from '@src/components/ui/icon';
 import {COLOR, FontFamily, FontSize, Space, space} from '@src/constants';
-import {signInWithGoogle} from '@src/helpers/login/login_google';
 import {RootStackNavigationProps} from '@src/routes';
 import {useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -18,6 +17,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 import {styles} from './styles';
+import { signInWithGoogle } from '@src/helpers/login';
 
 export function LoginMainScreen() {
   const {t} = useTranslation('login');
@@ -30,7 +30,7 @@ export function LoginMainScreen() {
   };
 
   const navigateToQRLogin = () => navigate('LoginQRMain');
-  const navigateToPassLogin = () => navigate('LoginPassword');
+  const navigateToPassLogin = () => navigate('LoginPass');
   const navigateToNfcLogin = () => navigate('LoginNfc');
 
   const handleGoogleLogin = async () => {

@@ -1,45 +1,73 @@
-import {useNavigation} from '@react-navigation/native';
-import {AtButtonBox, AtButtonLink, AtInput, Icon} from '@src/components';
-import {Tagline} from '@src/components/common/tagline';
+import {AtInput, Icon} from '@src/components';
+import {
+  LoginContentLayout,
+  LoginDecoratorLayout,
+  LoginLayout,
+} from '@src/components/layout';
 import {space} from '@src/constants';
-import {RootStackNavigationProps} from '@src/routes';
+import {signInWithPass} from '@src/helpers/login';
+import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Image, StatusBar, Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {styles} from './styles';
+import {Image} from 'react-native';
+import Toast from 'react-native-toast-message';
+import {HeaderLogin, LoginForm, LoginSave, LoginSection} from '../components';
 
-export function LoginPassword() {
+export function LoginPassScreen() {
   const {t} = useTranslation('login');
-  const {goBack} = useNavigation<RootStackNavigationProps>();
+  const [uid, setUid] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSave, setSave] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
-  const navigateToMainLogin = () => goBack();
+  const handleSignin = async () => {
+    try {
+      setLoading(true);
+      await signInWithPass(uid, password);
+    } catch (error) {
+      Toast.show({
+        type: 'error',
+        text1: t('toast_failed'),
+        text2: t('toast_failed_description'),
+        autoHide: true,
+      });
+    } finally {
+      setLoading(false);
+      setPassword('');
+      setUid('');
+    }
+  };
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <StatusBar hidden />
-      <View style={styles.header}>
-        <Tagline />
+    <LoginLayout>
+      <LoginDecoratorLayout>
+        <HeaderLogin />
         <Image
           source={require('@src/assets/images/login_pass.png')}
           style={{height: space(350), aspectRatio: 1}}
           resizeMode="contain"
         />
-      </View>
+      </LoginDecoratorLayout>
+      <LoginContentLayout>
+        <LoginForm description="Type your username and password to continue">
+          <AtInput
+            icon={Icon.NumberIcon}
+            placeholder="21020365"
+            value={uid}
+            setValue={setUid}
+            mode="numeric"
+          />
+          <AtInput
+            icon={Icon.PasswordIcon}
+            placeholder="***"
+            value={password}
+            setValue={setPassword}
+            mode="password"
+          />
 
-      <SafeAreaView style={styles.content} edges={['bottom']}>
-        <View style={styles.inputWrapper}>
-          <Text style={styles.titleSection}>
-            Type your username and password to continue
-          </Text>
-          <AtInput icon={Icon.NumberIcon} placeholder="21020365" />
-          <AtInput icon={Icon.PasswordIcon} placeholder="***" isHideContent />
-        </View>
-
-        <View style={styles.actionWrapper}>
-          <AtButtonBox title="Login" color="yellow" />
-          <AtButtonLink title={t('go_back')} onPress={navigateToMainLogin} />
-        </View>
-      </SafeAreaView>
-    </SafeAreaView>
+          <LoginSave isSave={isSave} setSave={setSave} />
+        </LoginForm>
+        <LoginSection handleLogin={handleSignin} isLoading={isLoading} />
+      </LoginContentLayout>
+    </LoginLayout>
   );
 }

@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import {Tagline} from '../tagline';
+import {Tagline} from '../../../../components/common/tagline';
 import { ButtonLang } from '@src/components/ui';
 import { styles } from './styles';
 

@@ -1,4 +1,5 @@
 import {AtInput, Icon} from '@src/components';
+import {HeaderLogin} from '@src/components/common';
 import {
   LoginContentLayout,
   LoginDecoratorLayout,
@@ -6,23 +7,22 @@ import {
 } from '@src/components/layout';
 import {AtCheckbox} from '@src/components/ui/checkbox';
 import {space} from '@src/constants';
-import {signInWithPass2Fa} from '@src/helpers/login/login_pass_2fa';
+import {signInWithCode2Fa} from '@src/helpers/login/login_code_2fa';
 import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, View} from 'react-native';
 import Toast from 'react-native-toast-message';
-import {HeaderLogin, LoginSection} from '../components';
 
-export function LoginPass2FaScreen() {
-  const [password, setPassword] = useState('');
+export function LoginCode2faScreen() {
+  const [code, setCode] = useState('');
   const [isSave, setSave] = useState(false);
-  const {t} = useTranslation('login');
   const [isLoading, setLoading] = useState(false);
+  const {t} = useTranslation('login');
 
   const handleSignin = async () => {
     try {
       setLoading(true);
-      await signInWithPass2Fa(password, isSave);
+      await signInWithCode2Fa(code, isSave);
     } catch (error) {
       Toast.show({
         type: 'error',
@@ -32,7 +32,7 @@ export function LoginPass2FaScreen() {
       });
     } finally {
       setLoading(false);
-      setPassword('');
+      setCode('');
     }
   };
 
@@ -47,40 +47,26 @@ export function LoginPass2FaScreen() {
         />
       </LoginDecoratorLayout>
       <LoginContentLayout>
+        <AtInput
+          icon={Icon.PasswordIcon}
+          placeholder="Ma code"
+          onEnter={handleSignin}
+          setValue={setCode}
+          value={code}
+          mode="text"
+        />
+
         <View
           style={{
+            flex: 1,
             width: '100%',
-            flexDirection: 'column',
-            gap: space(8),
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
             alignItems: 'center',
+            gap: space(4),
           }}>
-          <AtInput
-            icon={Icon.PasswordIcon}
-            placeholder="***"
-            onEnter={handleSignin}
-            setValue={setPassword}
-            value={password}
-            mode="password"
-          />
-
-          <View
-            style={{
-              flex: 1,
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
-              gap: space(4),
-            }}>
-            <AtCheckbox
-              checked={isSave}
-              setValue={setSave}
-              label="Save device"
-            />
-          </View>
+          <AtCheckbox checked={isSave} setValue={setSave} label="Save device" />
         </View>
-
-        <LoginSection handleLogin={handleSignin} isLoading={isLoading} />
       </LoginContentLayout>
     </LoginLayout>
   );

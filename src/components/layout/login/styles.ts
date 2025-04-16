@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     borderRadius: space(40),
     display: 'flex',
     padding: space(40),
-    gap: Space.lg,
+    gap: Space.xl,
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',

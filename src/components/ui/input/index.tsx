@@ -8,23 +8,21 @@ import {styles} from './styles';
 interface AtInputProps {
   icon?: IIcon;
   placeholder?: string;
-  isHideContent?: boolean;
   onEnter?: () => void;
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-  mode: 'text' | 'password';
+  mode: 'text' | 'password' | 'numeric';
 }
 
 export function AtInput({
   icon: Icon,
   placeholder,
-  isHideContent,
   onEnter,
   value,
   setValue,
   mode = 'text',
 }: AtInputProps) {
-  const [isHideText, setHideText] = useState(isHideContent);
+  const [isHideText, setHideText] = useState(true);
   const handleToggle = () => setHideText(prev => !prev);
   return (
     <View style={styles.container}>
@@ -37,6 +35,7 @@ export function AtInput({
         returnKeyType="done"
         value={value}
         onChange={e => setValue(e.nativeEvent.text)}
+        keyboardType={mode == 'numeric' ? 'numeric' : 'default'}
       />
 
       {mode === 'password' ? (
