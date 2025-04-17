@@ -1,7 +1,13 @@
 import {Icon as IconUI} from '@src/components/ui';
 import {Color} from '@src/constants';
 import {Dispatch, SetStateAction, useState} from 'react';
-import {TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  StyleProp,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {IIcon} from '../icon';
 import {styles} from './styles';
 
@@ -12,6 +18,8 @@ interface AtInputProps {
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
   mode: 'text' | 'password' | 'numeric';
+  style?: StyleProp<ViewStyle>;
+  endComponent?: React.ReactNode;
 }
 
 export function AtInput({
@@ -21,14 +29,16 @@ export function AtInput({
   value,
   setValue,
   mode = 'text',
+  style,
+  endComponent
 }: AtInputProps) {
   const [isHideText, setHideText] = useState(true);
   const handleToggle = () => setHideText(prev => !prev);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       {Icon && <Icon stroke={2} />}
       <TextInput
-        style={styles.input}
+        style={[styles.input]}
         placeholder={placeholder}
         secureTextEntry={isHideText}
         onSubmitEditing={onEnter}
@@ -47,6 +57,8 @@ export function AtInput({
           )}
         </TouchableOpacity>
       ) : null}
+
+      {endComponent}
     </View>
   );
 }

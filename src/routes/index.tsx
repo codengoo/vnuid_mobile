@@ -1,3 +1,4 @@
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {
   createNavigationContainerRef,
   createStaticNavigation,
@@ -7,16 +8,62 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
-import { HomeScreen } from '@src/screens/home';
+import {Icon} from '@src/components';
+import BottomTabbar from '@src/components/bottom_tab';
+import {HomeScreen} from '@src/screens/home';
 import {Login2FaScreen} from '@src/screens/login/2fa';
-import { LoginCode2faScreen } from '@src/screens/login/code_2fa';
+import {LoginCode2faScreen} from '@src/screens/login/code_2fa';
 import {LoginMainScreen} from '@src/screens/login/main';
 import {LoginNfcScreen} from '@src/screens/login/nfc';
-import { ScanNfcQrScreen } from '@src/screens/login/nfc_scan_qr';
+import {ScanNfcQrScreen} from '@src/screens/login/nfc_scan_qr';
 import {LoginPassScreen} from '@src/screens/login/pass';
 import {LoginPass2FaScreen} from '@src/screens/login/pass_2fa';
 import {LoginQRMain} from '@src/screens/login/qr_main';
 import Onboarding from '@src/screens/onboarding';
+
+const RootTab = createBottomTabNavigator({
+  tabBar: props => <BottomTabbar {...props} />,
+  screens: {
+    Home: {
+      screen: HomeScreen,
+      options: {
+        tabBarIcon: ({color}) => (
+          <Icon.HomeIcon color={color} size={32} stroke={2} />
+        ),
+      },
+    },
+    Attendance: {
+      screen: Onboarding,
+      options: {
+        tabBarIcon: ({color}) => (
+          <Icon.FingerprintIcon color={color} size={32} stroke={1.75} />
+        ),
+      },
+    },
+
+    Calendar: {
+      screen: Onboarding,
+      options: {
+        tabBarIcon: ({color}) => (
+          <Icon.CalendarIcon color={color} size={32} stroke={1.75} />
+        ),
+      },
+    },
+
+    Profile: {
+      screen: Onboarding,
+      options: {
+        tabBarIcon: ({color}) => (
+          <Icon.UserIcon color={color} size={32} stroke={1.75} />
+        ),
+      },
+    },
+  },
+  screenOptions: {
+    animation: 'shift',
+    headerShown: false,
+  },
+});
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Onboarding',
@@ -26,7 +73,7 @@ const RootStack = createNativeStackNavigator({
     LoginMain: LoginMainScreen,
     Login2Fa: Login2FaScreen,
     LoginQRMain: LoginQRMain,
-    
+
     LoginNfc: LoginNfcScreen,
     LoginPass: LoginPassScreen,
 
@@ -34,7 +81,7 @@ const RootStack = createNativeStackNavigator({
     LoginCode2Fa: LoginCode2faScreen,
 
     LoginNfcQr: ScanNfcQrScreen,
-    Home: HomeScreen
+    Main: RootTab,
   },
 });
 

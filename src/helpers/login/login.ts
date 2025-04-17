@@ -16,7 +16,7 @@ async function switchLogin(data: IResponseLogin, status: number) {
   switch (status) {
     case 200:
       await AsyncStorage.setItem(STG_AUTH_TOKEN, data.token);
-      navigationRef.navigate('Home');
+      navigationRef.navigate('Main');
       break;
 
     case 202:

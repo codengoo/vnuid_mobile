@@ -5,7 +5,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{position: "relative"}}>
       <Navigation ref={navigationRef} />
       <Toast />
     </SafeAreaProvider>
