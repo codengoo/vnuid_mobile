@@ -10,6 +10,7 @@ import {
 } from '@react-navigation/native-stack';
 import {Icon} from '@src/components';
 import BottomTabbar from '@src/components/bottom_tab';
+import CalendarScreen from '@src/screens/calendar';
 import {HomeScreen} from '@src/screens/home';
 import {Login2FaScreen} from '@src/screens/login/2fa';
 import {LoginCode2faScreen} from '@src/screens/login/code_2fa';
@@ -20,6 +21,7 @@ import {LoginPassScreen} from '@src/screens/login/pass';
 import {LoginPass2FaScreen} from '@src/screens/login/pass_2fa';
 import {LoginQRMain} from '@src/screens/login/qr_main';
 import Onboarding from '@src/screens/onboarding';
+import { ProfileScreen } from '@src/screens/profile';
 
 const RootTab = createBottomTabNavigator({
   tabBar: props => <BottomTabbar {...props} />,
@@ -42,16 +44,16 @@ const RootTab = createBottomTabNavigator({
     },
 
     Calendar: {
-      screen: Onboarding,
+      screen: CalendarScreen,
       options: {
         tabBarIcon: ({color}) => (
-          <Icon.CalendarIcon color={color} size={32} stroke={1.75} />
+          <Icon.LineIcon color={color} size={32} stroke={1.75} />
         ),
       },
     },
 
     Profile: {
-      screen: Onboarding,
+      screen: ProfileScreen,
       options: {
         tabBarIcon: ({color}) => (
           <Icon.UserIcon color={color} size={32} stroke={1.75} />

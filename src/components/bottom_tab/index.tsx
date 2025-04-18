@@ -13,7 +13,7 @@ export default function BottomTabbar({
       edges={['bottom']}
       style={{
         position: 'absolute',
-        bottom: space(50),
+        bottom: space(32),
         left: 0,
         flexDirection: 'row',
         justifyContent: 'center',

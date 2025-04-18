@@ -1,7 +1,9 @@
 export const Color = {
   yellow100: '#FFF9F1',
+  yellow200: '#FFECCE',
+  yellow300: '#FFE3B2',
   yellow400: '#FFCB8B',
-  yellow500: '#F5B669',
+  yellow500: '#FFB669',
   yellow700: '#FFA500',
   yellow900: '#FF8C00',
 
@@ -13,8 +15,9 @@ export const Color = {
   red100: '#F8D7DA',
   red300: '#F26E67',
 
-  black700: '#2E2D2D',
+  black100: '#D9D9D9',
   black500: '#747474',
+  black700: '#2E2D2D',
 
   white: '#FFFFFF',
 };

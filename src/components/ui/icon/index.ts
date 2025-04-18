@@ -1,5 +1,6 @@
 export * from './arrow_right';
 export * from './asterisk';
+export * from './calendar';
 export * from './card';
 export * from './check';
 export * from './chevron_right';
@@ -9,6 +10,7 @@ export * from './fingerprint';
 export * from './google';
 export * from './heart';
 export * from './home';
+export * from './line';
 export * from './login';
 export * from './nfc';
 export * from './number';
@@ -18,4 +20,5 @@ export * from './scan_face';
 export * from './search';
 export * from './type';
 export * from './user';
-export* from "./calendar"
+export * from './logout';
+export * from "./key";
